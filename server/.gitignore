@@ -39,3 +39,6 @@ out/
 
 ### application.yml ###
 application.yaml
+
+### DS_Store
+.DS_Store
