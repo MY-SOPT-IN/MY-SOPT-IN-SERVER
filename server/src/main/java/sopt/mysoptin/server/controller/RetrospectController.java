@@ -23,6 +23,5 @@ public class RetrospectController {
         } else {
             return ApiResponse.success(Success.GET_RETROSPECT_SUCCESS, data);
         }
-
     }
 }
