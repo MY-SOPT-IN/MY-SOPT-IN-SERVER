@@ -2,6 +2,7 @@ package sopt.mysoptin.server.controller;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
+import sopt.mysoptin.server.service.RetrospectService;
 
 @RestController
 @RequiredArgsConstructor
