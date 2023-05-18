@@ -1,5 +1,6 @@
 package sopt.mysoptin.server.service;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -10,6 +11,7 @@ import sopt.mysoptin.server.exception.model.NoContentException;
 import sopt.mysoptin.server.infrastructure.RetrospectRepository;
 
 import java.sql.Date;
+import java.text.SimpleDateFormat;
 
 @Service
 @RequiredArgsConstructor
@@ -18,9 +20,9 @@ public class RetrospectService {
 
     @Transactional
     public RetrospectResponseDto getOne(String date) {
-        Date convertedDate = new Date(Date.parse(date));
-        Retrospect retrospect = retrospectRepository.findByWrittenDate(convertedDate)
-                .orElseThrow(() -> new NoContentException(Success.GET_RETROSPECT_NO_CONTENT_SUCCESS, Success.GET_RETROSPECT_NO_CONTENT_SUCCESS.getMessage()));
+        Date convertedDate = Date.valueOf(date);
+        Retrospect retrospect = retrospectRepository.findByWrittenDate(convertedDate);
+        if (retrospect == null) return null;
 
         return RetrospectResponseDto.of(retrospect.getRetrospectId(), retrospect.getDescRoutine(), retrospect.getDescBest(), retrospect.getDescSelf(), retrospect.isPublic(), retrospect.getWrittenDate().toString());
     }

@@ -12,7 +12,7 @@ public interface RetrospectRepository extends Repository<Retrospect, Long> {
     void save(Retrospect user);
 
     // READ
-    Optional<Retrospect> findByWrittenDate(Date writtenDate);
+    Retrospect findByWrittenDate(Date writtenDate);
     Optional<List<Retrospect>> findByWrittenDateBetween(Date fromDate, Date toDate);
 
     // UPDATE
