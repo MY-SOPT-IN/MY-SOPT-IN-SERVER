@@ -9,7 +9,7 @@ import java.util.Optional;
 
 public interface RetrospectRepository extends Repository<Retrospect, Long> {
     // CREATE
-    void save(Retrospect user);
+    void save(Retrospect retrospect);
 
     // READ
     Optional<Retrospect> findByWrittenDate(Date writtenDate);
