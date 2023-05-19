@@ -18,6 +18,7 @@ public enum Success {
     /**
      * 201 CREATED
      */
+    POST_RETROSPECT_SUCCESS(HttpStatus.CREATED, "회고 생성 성공"),
 
     /**
      * 204 NO CONTENT
