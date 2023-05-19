@@ -1,5 +1,6 @@
 package sopt.mysoptin.server.controller.dto.response;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -13,6 +14,7 @@ public class RetrospectResponseDto {
     private String descRoutine;
     private String descBest;
     private String descSelf;
+    @JsonProperty("isPublic")
     private boolean isPublic;
     private String writtenDate;
 
