@@ -15,6 +15,8 @@ public enum Success {
     GET_RETROSPECT_LIST_SUCCESS(HttpStatus.OK, "회고 전체 조회에 성공했습니다."),
     GET_RETROSPECT_SUCCESS(HttpStatus.OK, "회고 단일 조회에 성공했습니다."),
 
+    UPDATE_RETROSPECT_SUCCESS(HttpStatus.OK, "정회고 수정을 성공했습니다."),
+
     /**
      * 201 CREATED
      */
