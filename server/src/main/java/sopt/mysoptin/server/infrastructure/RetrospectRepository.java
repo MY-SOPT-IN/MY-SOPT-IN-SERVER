@@ -18,6 +18,7 @@ public interface RetrospectRepository extends Repository<Retrospect, Long> {
     Retrospect findByWrittenDate(Date writtenDate);
 
     Retrospect findByRetrospectId(Long retrospectId);
+
     Optional<List<Retrospect>> findByWrittenDateBetween(Date fromDate, Date toDate);
 
     // UPDATE

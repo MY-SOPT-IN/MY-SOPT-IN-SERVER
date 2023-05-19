@@ -1,5 +1,6 @@
 package sopt.mysoptin.server.controller.dto.response;
 
+
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
