@@ -18,6 +18,7 @@ public enum Error {
      * 404 NOT FOUND
      */
     NOT_FOUND_RETROSPECT_EXCEPTION(HttpStatus.NOT_FOUND, "존재하지 회고 리스트입니다"),
+    NOT_FOUND_ROUTINE_EXCEPTION(HttpStatus.NOT_FOUND, "존재하지 않는 루틴입니다."),
 
     /**
      * 500 INTERNAL SERVER ERROR

@@ -11,4 +11,5 @@ public interface RoutineRepository extends Repository<Routine, Long> {
     // UPDATE
 
     // DELETE
+    long deleteByRoutineId(Long routineId);
 }
