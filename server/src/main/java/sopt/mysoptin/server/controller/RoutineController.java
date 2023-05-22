@@ -6,6 +6,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 import sopt.mysoptin.server.common.dto.ApiResponse;
 import sopt.mysoptin.server.exception.Success;
+import sopt.mysoptin.server.service.RoutineService;
 
 @RestController
 @RequiredArgsConstructor
@@ -17,7 +18,7 @@ public class RoutineController {
     @DeleteMapping("/{routineId}")
     @ResponseStatus(HttpStatus.OK)
     public ApiResponse deleteOne(@PathVariable("routineId") Long routineId) {
-        routineService.
+        routineService.deleteOne(routineId);
         return ApiResponse.success(Success.DELETE_ROUTINE_SUCCESS);
     }
 }
