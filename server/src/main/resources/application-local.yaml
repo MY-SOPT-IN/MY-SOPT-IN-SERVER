@@ -1,0 +1,46 @@
+server:
+  port: 1234
+
+spring:
+  #   Dummy Data 통신 대비
+  #   resources 패키지 내부에 sql 확장자 파일 생성
+  sql:
+    init:
+      mode: always
+  config:
+    activate:
+      on-profile: local
+  datasource:
+    driver-class-name: org.h2.Driver
+    url: jdbc:h2:tcp://localhost/~/collabo-seminar;DATABASE_TO_UPPER=false
+    username: sa
+    password:
+
+
+
+  jpa:
+    show-sql: true
+    hibernate:
+      # create 로 설정하면 drop 하고 매번 새로 생성
+      # create-drop : 메모리 방식과 유사
+      # update : 있는 DB 대상 업데이트해줌
+      ddl-auto: update
+    properties:
+      hibernate:
+        show_sql: true
+        format_sql:
+        dialect: org.hibernate.dialect.H2Dialect
+#    generate-ddl: true
+
+
+
+
+logging:
+  level:
+    org:
+      hibernate:
+        SQL: debug
+        type: trace
+
+
+

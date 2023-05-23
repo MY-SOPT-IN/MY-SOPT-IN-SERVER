@@ -10,6 +10,7 @@ import java.sql.Date;
 
 @Entity
 @Getter
+@Table(name = "RETROSPECT")
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class Retrospect {
     @Id

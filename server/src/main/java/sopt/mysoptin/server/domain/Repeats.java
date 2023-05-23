@@ -8,6 +8,7 @@ import javax.persistence.*;
 
 @Entity
 @Getter
+@Table(name = "REPEATS")
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class Repeats {
     @Id
@@ -15,18 +16,20 @@ public class Repeats {
     private Long repeatsId;
 
     @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.REMOVE)
-    @JoinColumn(nullable = false, foreignKey = @ForeignKey(ConstraintMode.CONSTRAINT))
+    @JoinColumn(name = "routine_id",nullable = false, foreignKey = @ForeignKey(ConstraintMode.CONSTRAINT))
     private Routine routine;
 
+    // TODO : String day; 관련 로직 해결 필요
     @Column(nullable = false)
-    private String day;
+//    private String dayOfRoutine;
+    private Integer dayOfRoutine;
 
-    public Repeats(Routine routine, String day) {
+    public Repeats(Routine routine, Integer day) {
         this.routine = routine;
-        this.day = day;
+        this.dayOfRoutine = day;
     }
 
-    public static Repeats newInstance(Routine routine, String day) {
+    public static Repeats newInstance(Routine routine, Integer day) {
         return new Repeats(routine, day);
     }
 }

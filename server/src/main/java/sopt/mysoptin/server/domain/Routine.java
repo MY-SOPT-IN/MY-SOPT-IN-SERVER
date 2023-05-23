@@ -8,6 +8,7 @@ import javax.persistence.*;
 
 @Entity
 @Getter
+@Table(name = "ROUTINE")
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class Routine {
     @Id
