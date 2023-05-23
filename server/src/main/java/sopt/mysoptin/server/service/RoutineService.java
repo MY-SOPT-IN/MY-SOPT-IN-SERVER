@@ -50,4 +50,12 @@ public class RoutineService {
         }
         return result;
     }
+
+    @Transactional
+    public boolean deleteOne(Long routineId) {
+        repeatsRepository.deleteAllByRoutineRoutineId(routineId);
+        Long cnt = routineRepository.deleteByRoutineId(routineId);
+        if (cnt == 0) return false;
+        else return true;
+    }
 }
