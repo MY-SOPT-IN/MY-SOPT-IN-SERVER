@@ -15,7 +15,7 @@ public class Repeats {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long repeatsId;
 
-    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.REMOVE)
+    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinColumn(name = "routine_id",nullable = false, foreignKey = @ForeignKey(ConstraintMode.CONSTRAINT))
     private Routine routine;
 
