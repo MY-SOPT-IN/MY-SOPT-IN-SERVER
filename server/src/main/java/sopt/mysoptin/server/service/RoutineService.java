@@ -7,6 +7,7 @@ import org.springframework.transaction.annotation.Transactional;
 import sopt.mysoptin.server.controller.dto.response.RoutineResponseDto;
 import sopt.mysoptin.server.domain.Repeats;
 import sopt.mysoptin.server.domain.Routine;
+import sopt.mysoptin.server.exception.Error;
 import sopt.mysoptin.server.infrastructure.RepeatsRepository;
 import sopt.mysoptin.server.infrastructure.RoutineRepository;
 
@@ -53,9 +54,13 @@ public class RoutineService {
 
     @Transactional
     public boolean deleteOne(Long routineId) {
-        repeatsRepository.deleteAllByRoutineRoutineId(routineId);
-        Long cnt = routineRepository.deleteByRoutineId(routineId);
-        if (cnt == 0) return false;
-        else return true;
+        boolean isExistRoutine = routineRepository.existsById(routineId);
+        if (!isExistRoutine){
+            return false;
+        }else {
+            routineRepository.deleteById(routineId);
+            return true;
+        }
+
     }
 }

@@ -5,6 +5,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Getter
@@ -20,6 +21,9 @@ public class Routine {
 
     @Column(nullable = false)
     private String routineAt;
+
+    @OneToMany(fetch = FetchType.LAZY,cascade = CascadeType.REMOVE, mappedBy = "routine", orphanRemoval = true)
+    private List<Repeats> repeats;
 
     public Routine(String routineName, String routineAt) {
         this.routineName = routineName;

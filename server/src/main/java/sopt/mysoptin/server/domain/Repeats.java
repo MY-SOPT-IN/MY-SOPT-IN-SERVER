@@ -5,6 +5,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Getter
@@ -15,7 +16,7 @@ public class Repeats {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long repeatsId;
 
-    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "routine_id",nullable = false, foreignKey = @ForeignKey(ConstraintMode.CONSTRAINT))
     private Routine routine;
 

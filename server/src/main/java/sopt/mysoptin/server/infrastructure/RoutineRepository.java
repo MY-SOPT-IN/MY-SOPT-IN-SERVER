@@ -7,10 +7,10 @@ public interface RoutineRepository extends JpaRepository<Routine, Long> {
     // CREATE
 
     // READ
-    Routine readByRoutineId(Long routineId);
 
     // UPDATE
 
     // DELETE
-    Long deleteByRoutineId(Long routineId);
+
+
 }

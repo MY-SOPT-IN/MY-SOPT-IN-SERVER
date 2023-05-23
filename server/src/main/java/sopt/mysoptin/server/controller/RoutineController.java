@@ -33,7 +33,7 @@ public class RoutineController {
     public ApiResponse deleteOne(@PathVariable("routineId") Long routineId) {
         boolean chk = routineService.deleteOne(routineId);
         if (chk) {
-            return ApiResponse.success(Success.DELETE_ROUTINE_SUCCESS);
+            return ApiResponse.success(Success.DELETE_ROUTINE_SUCCESS, routineId);
         } else {
             return ApiResponse.error(Error.NOT_FOUND_ROUTINE_EXCEPTION);
         }
