@@ -1,5 +1,6 @@
 package sopt.mysoptin.server.infrastructure;
 
+import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.Repository;
@@ -10,7 +11,7 @@ import java.sql.Date;
 import java.util.List;
 import java.util.Optional;
 
-public interface RetrospectRepository extends Repository<Retrospect, Long> {
+public interface RetrospectRepository extends JpaRepository<Retrospect, Long> {
     // CREATE
     Retrospect save(Retrospect retrospect);
 
