@@ -19,6 +19,14 @@ public class RoutineController {
 
     private final RoutineService routineService;
 
+    @GetMapping("")
+    public ApiResponse getAllRoutines() {
+        List<RoutineResponseDto> result = routineService.getAllRoutine();
+        if (result.isEmpty()) {
+            return ApiResponse.success(Success.GET_ROUTINE_NO_CONTENT_SUCCESS, Collections.emptyList());
+        }
+        return ApiResponse.success(Success.GET_ROUTINE_LIST_SUCCESS, result);
+    }
     @GetMapping("/{targetDate}")
     public ApiResponse getRoutinesOfDate(@PathVariable("targetDate") String targetDate) {
         List<RoutineResponseDto> result = routineService.getAllRoutineOf(targetDate);

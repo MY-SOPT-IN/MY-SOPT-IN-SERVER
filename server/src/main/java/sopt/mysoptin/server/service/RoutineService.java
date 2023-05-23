@@ -26,6 +26,18 @@ public class RoutineService {
 //    private final RepeatsRepository repeatsRepository;
 
     @Transactional
+    public List<RoutineResponseDto> getAllRoutine() {
+        List<RoutineResponseDto> result = new ArrayList<>();
+        for (Routine routine : routineRepository.findAll()) {
+            result.add(RoutineResponseDto.of(
+                    routine.getRoutineId(),
+                    routine.getRoutineName(),
+                    routine.getRoutineAt())
+            );
+        }
+        return result;
+    }
+    @Transactional
     public List<RoutineResponseDto> getAllRoutineOf(String targetDate) {
 
         LocalDate dateValue = LocalDate.parse(targetDate);
