@@ -1,9 +1,9 @@
 package sopt.mysoptin.server.infrastructure;
 
 import org.springframework.data.repository.Repository;
-import sopt.mysoptin.server.domain.Repeat;
+import sopt.mysoptin.server.domain.Repeats;
 
-public interface RepeatRepository extends Repository<Repeat, Long> {
+public interface RepeatsRepository extends Repository<Repeats, Long> {
     // CREATE
 
     // READ
