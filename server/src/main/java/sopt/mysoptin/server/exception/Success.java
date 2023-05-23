@@ -19,6 +19,8 @@ public enum Success {
 
     UPDATE_RETROSPECT_SUCCESS(HttpStatus.OK, "정회고 수정을 성공했습니다."),
 
+    DELETE_ROUTINE_SUCCESS(HttpStatus.OK, "루틴 삭제에 성공했습니다."),
+
     /**
      * 201 CREATED
      */
