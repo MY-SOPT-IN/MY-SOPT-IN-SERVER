@@ -4,8 +4,10 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import sopt.mysoptin.server.domain.Routine;
 import sopt.mysoptin.server.exception.Error;
 import sopt.mysoptin.server.exception.model.NotFoundException;
+import sopt.mysoptin.server.infrastructure.RepeatsRepository;
 import sopt.mysoptin.server.infrastructure.RoutineRepository;
 
 @Service
@@ -13,13 +15,13 @@ import sopt.mysoptin.server.infrastructure.RoutineRepository;
 @Slf4j
 public class RoutineService {
     private final RoutineRepository routineRepository;
+    private final RepeatsRepository repeatsRepository;
 
     @Transactional
-    public void deleteOne(Long routineId) {
-        Long deletedCount = routineRepository.deleteByRoutineId(routineId);
-        if (deletedCount == 0) {
-            throw new NotFoundException(Error.NOT_FOUND_ROUTINE_EXCEPTION, Error.NOT_FOUND_ROUTINE_EXCEPTION.getMessage());
-        }
+    public boolean deleteOne(Long routineId) {
+        repeatsRepository.deleteAllByRoutineRoutineId(routineId);
+        Long cnt = routineRepository.deleteByRoutineId(routineId);
+        if (cnt == 0) return false;
+        else return true;
     }
-
 }
