@@ -1,5 +1,6 @@
 package sopt.mysoptin.server.infrastructure;
 
+import org.springframework.data.domain.Sort;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
@@ -20,7 +21,7 @@ public interface RetrospectRepository extends JpaRepository<Retrospect, Long> {
 
     Retrospect findByRetrospectId(Long retrospectId);
 
-    Optional<List<Retrospect>> findByWrittenDateBetween(Date fromDate, Date toDate);
+    Optional<List<Retrospect>> findByWrittenDateBetweenOrderByWrittenDateDesc(Date fromDate, Date toDate, Sort sort);
 
     // UPDATE
     @Modifying
