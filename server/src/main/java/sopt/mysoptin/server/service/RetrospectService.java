@@ -19,6 +19,7 @@ import java.text.DateFormat;
 import java.time.LocalDate;
 import java.util.List;
 import java.util.stream.Collectors;
+import org.springframework.data.domain.Sort;
 
 @Service
 @RequiredArgsConstructor
@@ -78,8 +79,8 @@ public class RetrospectService {
         Date firstDate = Date.valueOf(LocalDate.of(LocalDate.now().getYear(), month, 1).toString());
         int lastDay = LocalDate.of(LocalDate.now().getYear(), month, 1).lengthOfMonth();
         Date lastDate = Date.valueOf(LocalDate.of(LocalDate.now().getYear(), month, lastDay).toString());
-
-        List<Retrospect> retrospectList = retrospectRepository.findByWrittenDateBetween(firstDate, lastDate)
+        Sort sort = sortByWrittenDate();
+        List<Retrospect> retrospectList = retrospectRepository.findByWrittenDateBetweenOrderByWrittenDateDesc(firstDate, lastDate, sort)
                 .orElseThrow(() -> new NotFoundException(Error.NOT_FOUND_RETROSPECT_EXCEPTION, Error.NOT_FOUND_RETROSPECT_EXCEPTION.getMessage()));
 
         return retrospectList.stream()
@@ -92,5 +93,9 @@ public class RetrospectService {
                         retrospect.getWrittenDate().toString()
                 ))
                 .collect(Collectors.toList());
+    }
+
+    private Sort sortByWrittenDate() {
+        return Sort.by(Sort.Direction.DESC, "writtenDate");
     }
 }
